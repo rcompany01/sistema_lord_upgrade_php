@@ -1,0 +1,147 @@
+<?php
+	// SELECIONA QUAIS SETORES A BUSCA VAI SELECIONAR		 	
+			$valores="";
+			if (isset($_POST['setor'])){
+				$vt = $_POST['setor'];
+				foreach ($vt as $in => $valor) {
+					$valores .= $set->NomeSetor($valor)." - ";
+				}
+			}
+?>
+
+<div class="vis-fat">
+	<h4 style="margin:20px 0px 0px 0px;font-weight:normal;font-family:tahoma"><b>Clientes:</b> Todos os Clientes - (Repasse)</h4>
+
+	<h4 style="margin:20px 0px 0px 0px;font-weight:normal;font-family:tahoma">
+		<b>Período:</b> 
+		<?= "De: ".$class->FormataData($_POST['de'])." ~ "."Até: ".$class->FormataData($_POST['ate']) ?>
+	</h4>
+
+	<h4 style="margin:20px 0px 0px 0px;font-weight:normal;font-family:tahoma">
+		<b>Setor: </b>Todos os Setores
+	</h4>
+</div>
+
+
+<div class="imp-fat">
+	<div class="logo_dm">
+		<img src="../img/logo.png" height="77" width="120" alt="">
+	</div>
+
+	<h4 class="rel-fat-txt">Relatório de Repasse (Todos)</h4>
+
+	<br>
+
+	<h4 style="margin:30px 0px 0px 30px;font-weight:normal;font-family:tahoma"><b>Clientes: </b>Todos os Clientes</h4>
+
+	<h4 style="margin:20px 0px 0px 30px;font-weight:normal;font-family:tahoma">
+		<b>Período:</b> 
+		<?= "De: ".$class->FormataData($_POST['de'])." ~ "."Até: ".$class->FormataData($_POST['ate']) ?>
+	</h4>
+
+	<h4 style="margin:20px 0px 0px 30px;font-weight:normal;font-family:tahoma">
+		<b>Setores:</b> Todos os Setores
+	</h4>
+</div>
+
+
+<table style="margin-top:30px;font-size:12px" class="table table-striped tabela-fat-rep">
+	<tr>
+		<td style="text-aling:center;font-weight:bold">ID</td>
+		<td style="text-aling:center;font-weight:bold">Prestador</td>
+		<td style="text-aling:center;font-weight:bold">Função</td>
+		<td style="text-aling:center;font-weight:bold">Dt. Evento</td>
+		<td style="text-aling:center;font-weight:bold">Entrada</td>
+		<td style="text-aling:center;font-weight:bold">Sáida</td>
+		<td style="text-aling:center;font-weight:bold">Extra</td>
+		<td style="text-aling:center;font-weight:bold">Valor</td>		
+		<td style="text-aling:center;font-weight:bold">Vl. Extra</td>
+		<td style="text-aling:center;font-weight:bold">Solic.</td>
+		<td style="text-aling:center;font-weight:bold">Setor</td>
+	</tr>
+
+<?php
+	$class->DadosFaturamentoTodos($_POST['de'], $_POST['ate']);
+	$repasse_t=0;
+	$cont=0;
+	while ($row_fat=mysqli_fetch_assoc($class->DadosFaturamentoTodos)){
+	$cont++;
+
+	// // CALCULO DE HORA EXTRA
+	// $ValorDaHora = $row_fat['repasse']/($row_fat['saida']-$row_fat['entrada']);
+	// $extra = $ValorDaHora * $row_fat['extra'];
+	// $totalExtra = $extra + ($extra/2);
+	// $repasse = $row_fat['repasse'];
+	// $total = ($extra+$repasse);
+
+	// HORA EXTRA
+		$vtEx = explode(":", $row_fat['extra']);
+		$extra = $vtEx[0].'.'.$vtEx[1];
+
+	// CALCULO DA HORA EXTRA (FATURAMENTO)
+		$ValorHoraExtra = ($row_fat['vl_repasse'] / $row_fat['horas_func']) / 2;
+		$finalExtra = $row_fat['extra_rep'];
+
+
+	// CALCULO DE VALOR TOTAL DE FATURAMENTO
+		$horasTrabalhadas = $row_fat['saida']-$row_fat['entrada'];
+		$repasse_t += $row_fat['repasse'] + $finalExtra;
+
+
+	// // CALCULO DE VALOR TOTAL DE FATURAMENTO
+	//  $repasse_t += $row_fat['repasse'];
+
+?>
+	<tr>
+		<td><?= $row_fat['prestador'] ?></td>
+		<td><?= strtoupper($pr->NomePrestador($row_fat['prestador'])) ?></td>
+		<td><?= strtoupper($fc->NomeFuncao($row_fat['funcao'])) ?></td>
+		<td><?= $class->FormataData($row_fat['data_evento']) ?></td>
+		<td><?= $row_fat['entrada'] ?></td>
+		<td><?= $row_fat['saida'] ?></td>
+		<td><?= $row_fat['extra'] ?></td>
+		<td><?= "R$ ".number_format(round($row_fat['repasse']),2) ?></td>
+		<td><?= "R$ ".number_format($finalExtra,2) ?></td>
+		<td><?= $row_fat['escala'] ?></td>	
+		<td><?= strtoupper($set->NomeSetor($row_fat['setor'])) ?></td>
+	</tr>
+
+<?php
+	}
+
+
+	 // MONTA UMA URL PARA REDIRECIONAR PARA A PAGINA DE IMPRESSAO
+
+	 $url="?funcao=FaturamentoRepasse";
+	 if (empty($_POST['de'])){
+	 	$url="?funcao=FaturamentoRepasse";
+	 }else{
+	 	$url = 'financeiro/repasse.php?Cod='.$_GET['Cod'].'&De='.$_POST['de'].'&ate='.$_POST['ate'];
+	}
+?>
+
+	<tr>
+		<td colspan="3"><b>Dt. Impressão:</b> <?= date('d/m/Y') ?></td>
+		<td colspan="3"><b>Total Serviços:</b> <?= $cont ?></td>
+		<td colspan="5"><b>Total Repasse :</b> <?= "R$ ".number_format($repasse_t,2) ?></td>
+	</tr>
+
+</table>
+
+<div class="form-actions">
+		<button onClick="window.location.href='?funcao=FaturamentoRepasse'" style='float:right;margin-right:10px' type="submit" class="btn btn-primary">Voltar</button>		
+	<?php
+		 if ($cont>0){
+	?>
+		<button onClick="imprimir('<?= $url ?>');" style='float:right;margin-right:10px' type="submit" class="btn btn-success">Imprimir <u class="icon-print icon-white"></u></button>		  
+	<?php
+		}
+	?>
+
+	<a href="financeiro/rep-excell-all.php?funcao=FaturamentoRepasse&de=<?= $_POST['de'] ?>&ate=<?= $_POST['ate'] ?>">
+		<button style='float:right;margin-right:20px;margin-top:0px' class="btn btn-success">
+			<u class="icon-align-center icon-white"></u>
+			Exportar Excell
+		</button>
+	</a>
+</div>

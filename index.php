@@ -1,0 +1,46 @@
+<?php
+	session_start();
+	require_once('class/login/login.class.php');
+	$class = new Autenticacao;
+	if ($_POST){
+		$user = addslashes($_POST['user']);
+		$senha = addslashes($_POST['pass']);
+		$class->autentica($user,$senha);
+	}
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Lord Eventos</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+	
+	<form method='post'>
+		<div class="cx-login">
+			<div class="img-login">
+				<img src="img/logo_login.jpg" height="400" width="400" alt="">
+			</div>
+
+			<div class="campos-login">
+				<h4>Usuário</h4>
+				<input name='user' required class='camp-login' name='user' type="text">
+
+				<h4>Senha</h4>
+				<input name='pass' required class='camp-login' name='pass' type="password">
+
+				<button class="bt-login">Entrar</button>
+			</div>
+		</div>
+	</form>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

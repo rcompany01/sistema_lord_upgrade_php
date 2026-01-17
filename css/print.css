@@ -1,0 +1,114 @@
+@media print { 
+  .cabecalho{
+  	display: none;
+  }
+
+  .rodape{
+  	display: none;
+  }
+
+  hr{
+  	display: none;
+  }
+
+  .form-actions{
+  	display: none!important;
+  }
+
+  .imp-fat{
+  	display: block;
+  }
+
+  .vis-fat{
+  	display: none;
+  }
+
+  .tabela-fat-rep{
+  	float: left;
+  	
+  }
+
+  .cx-funcoes{
+    display: none;
+  }
+
+  #busca-prest{
+    display: none;
+  }
+  #busca-nome-prest{
+    display: none;
+  }
+  #busca-status-prest{
+    display: none;
+  }
+
+  .cx-nome-rel{
+    display: block;
+  }
+
+  .paginacao-prest{
+    display: none;
+  }
+
+  .cx-desc{
+    width: 1100px;
+    float: left;
+
+  }
+
+  #tabela-descontos{
+    margin-left: 0px;
+  }
+
+  .bt-print-previa{
+    display: none;
+  }
+
+  #bar-print-escala{
+    display: none;
+  }
+
+  #form-add-prest{
+    display: none;
+  }
+
+  #form-edit-esc{
+    display: none;
+  }
+
+  .titulo-escala{
+    display: block;
+  }
+
+  #cabecalho-esc-print{
+    display: block;
+  }
+
+  #col-acoes{
+    display: none;
+  }
+
+  #busca-ordem-prest{
+    display: none;
+  }
+
+  #busca-esc{
+    display: none;
+  }
+  #busca-setor{
+    display: none;
+  }
+  #busca-cliente{
+    display: none;
+  }
+  #busca-periodo{
+    display: none;
+  }
+
+  .tabela-rpa{
+    width: 1100px;
+    margin: 0;
+  }
+
+
+}

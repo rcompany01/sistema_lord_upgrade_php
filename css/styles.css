@@ -1,0 +1,596 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+	--primary-color: #000242;
+	--accent-color: #51c9d2;
+	--accent-hover: #3db8c0;
+	--text-dark: #333;
+	--text-light: #777;
+	--white: #ffffff;
+	--glass-bg: rgba(255, 255, 255, 0.95);
+	--shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.15);
+	--radius-sm: 8px;
+	--radius-md: 12px;
+	--radius-lg: 20px;
+}
+
+html,
+body {
+	background: var(--accent-color) !important;
+	font-family: 'Poppins', sans-serif !important;
+	color: var(--text-dark);
+	line-height: 1.6;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* Reset de inputs para estilo moderno */
+input,
+select,
+textarea,
+button {
+	font-family: 'Poppins', sans-serif !important;
+}
+
+/* --- Layout Containers --- */
+.container {
+	width: 1100px;
+	margin: 20px auto;
+	background: var(--glass-bg);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-lg);
+	padding: 20px;
+	min-height: 80vh;
+	/* Garante que o container ocupe boa parte da tela */
+	position: relative;
+}
+
+/* --- Login Screen --- */
+.cx-login {
+	width: 400px;
+	/* Reduzido para ficar mais elegante */
+	height: auto;
+	margin: 10vh auto;
+	/* Centralização vertical melhorada */
+	background: var(--white);
+	border: none;
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-lg);
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.img-login {
+	width: 100%;
+	height: auto;
+	float: none;
+	background: none;
+	margin: 0 0 20px 0;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+.img-login img {
+	max-width: 150px;
+	/* Logo menor e mais elegante no login */
+	height: auto;
+	margin-top: 0;
+}
+
+.campos-login {
+	width: 100%;
+	height: auto;
+	float: none;
+	background: none;
+	margin: 0;
+	margin-left: 0;
+	text-align: left;
+}
+
+.campos-login h4 {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--text-light);
+	margin-bottom: 5px;
+	margin-top: 15px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.camp-login {
+	width: 100%;
+	padding: 12px 15px;
+	border: 1px solid #e1e1e1;
+	border-radius: var(--radius-sm);
+	background: #f9f9f9;
+	font-size: 15px;
+	color: var(--text-dark);
+	transition: all 0.3s ease;
+	box-sizing: border-box;
+	/* Garante que o padding não estoure a largura */
+	margin-bottom: 5px;
+}
+
+.camp-login:focus {
+	border-color: var(--accent-color);
+	background: var(--white);
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(81, 201, 210, 0.2);
+}
+
+.bt-login {
+	width: 100%;
+	height: 45px;
+	margin-top: 25px;
+	background: var(--primary-color);
+	color: var(--white);
+	border: none;
+	border-radius: var(--radius-sm);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 14px;
+}
+
+.bt-login:hover {
+	background: #00036b;
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+
+/* --- Header / Cabeçalho --- */
+.cabecalho {
+	width: 100%;
+	height: auto;
+	min-height: 80px;
+	float: none;
+	background: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 15px;
+	margin-bottom: 20px;
+}
+
+.logo {
+	width: 120px;
+	height: 77px;
+	float: none;
+	background-image: url(../img/logo.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 0;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.logo:hover {
+	transform: scale(1.05);
+}
+
+.menu {
+	width: auto;
+	height: auto;
+	float: none;
+	background: none;
+	margin: 0;
+	display: flex;
+	align-items: center;
+}
+
+/* Estilização do Menu Bootstrap */
+.nav-pills>li>a {
+	border-radius: var(--radius-sm) !important;
+	padding: 10px 15px;
+	margin: 0 5px;
+	font-weight: 500;
+	color: var(--primary-color) !important;
+	transition: all 0.2s;
+}
+
+.nav-pills>li>a:hover,
+.nav-pills>.active>a,
+.nav-pills>.active>a:hover,
+.nav-pills>.active>a:focus {
+	background-color: var(--accent-color) !important;
+	color: var(--white) !important;
+}
+
+.cx-info {
+	width: auto;
+	height: auto;
+	float: none;
+	background: none;
+	margin: 0;
+	border: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+	background: #f4f6f9;
+	border-radius: var(--radius-md);
+}
+
+.cx-info img {
+	float: none;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin-bottom: 5px;
+}
+
+.txt-info {
+	text-align: center;
+	margin: 0;
+	font-family: 'Poppins', sans-serif !important;
+	color: var(--primary-color);
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.txt-info i {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	color: var(--text-light);
+}
+
+/* --- Dashboard Dashboard --- */
+.img-clock {
+	width: 100%;
+	height: 500px;
+	/* Altura fixa ajustada */
+	float: none;
+	background-image: url(../img/fundo_menu.jpg);
+	background-size: cover;
+	background-position: center;
+	border-radius: var(--radius-md);
+	mix-blend-mode: normal;
+	/* Removido multiply para imagem aparecer melhor */
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 20px;
+	box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+.hora {
+	font-size: 80px;
+	margin: 0;
+	color: var(--white);
+	font-family: 'Poppins', sans-serif;
+	font-weight: 200;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Rodapé --- */
+.rodape {
+	width: 100%;
+	height: auto;
+	padding: 20px 0;
+	background: transparent;
+	text-align: center;
+	color: var(--white);
+	/* Texto branco para contrastar com o fundo principal */
+	margin-top: 40px;
+	font-size: 12px;
+}
+
+.txt-rodape {
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	font-weight: 300;
+	opacity: 0.8;
+}
+
+/* --- Tabelas e Listas --- */
+.table {
+	width: 100%;
+	margin-bottom: 20px;
+	background-color: transparent;
+	border-collapse: separate;
+	border-spacing: 0 5px;
+	/* Espaço entre linhas */
+}
+
+.table th,
+.table td {
+	padding: 12px !important;
+	vertical-align: middle;
+	border-top: none;
+	text-align: left !important;
+	/* Alinhamento mais moderno */
+}
+
+.table tr {
+	background: var(--white);
+	box-shadow: var(--shadow-sm);
+	border-radius: var(--radius-sm);
+	transition: transform 0.2s;
+}
+
+.table tr:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+
+.table tr td:first-child {
+	border-top-left-radius: var(--radius-sm);
+	border-bottom-left-radius: var(--radius-sm);
+}
+
+.table tr td:last-child {
+	border-top-right-radius: var(--radius-sm);
+	border-bottom-right-radius: var(--radius-sm);
+}
+
+/* --- Formulários Gerais --- */
+fieldset {
+	border: 1px solid #eee;
+	padding: 20px;
+	border-radius: var(--radius-md);
+	margin-bottom: 20px;
+	background: #fcfcfc;
+}
+
+legend {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--primary-color);
+	border-bottom: none;
+	padding: 0 10px;
+	width: auto;
+}
+
+label.control-label {
+	font-weight: 500;
+	color: var(--text-dark);
+	margin-right: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+	border: 1px solid #ddd;
+	border-radius: var(--radius-sm);
+	padding: 8px 12px;
+	background: var(--white);
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+	transition: all 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 3px rgba(81, 201, 210, 0.2);
+	outline: none;
+}
+
+/* Botões Gerais */
+.btn {
+	border-radius: 50px !important;
+	/* Pill shape */
+	padding: 8px 20px;
+	border: none;
+	font-weight: 500;
+	transition: all 0.3s;
+	box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+	background-color: var(--primary-color) !important;
+	background-image: none !important;
+}
+
+.btn-primary:hover {
+	background-color: #00036b !important;
+	box-shadow: var(--shadow-md);
+}
+
+.btn-danger {
+	background-color: #ef4444 !important;
+	background-image: none !important;
+}
+
+.cx-funcoes {
+	margin: 20px 0;
+	display: flex;
+	gap: 10px;
+	float: none;
+	/* Reset float */
+	width: 100%;
+}
+
+.cx-funcoes img {
+	float: none;
+	width: 40px;
+	/* Ícones de ação padronizados */
+	height: 40px;
+	transition: transform 0.2s;
+}
+
+.cx-funcoes img:hover {
+	transform: scale(1.1);
+}
+
+/* --- Classes Específicas Legado (Mantidas para compatibilidade, mas reestilizadas) --- */
+
+.opaca {
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(5px);
+}
+
+/* Ajustes de modais/popups para ficarem centralizados e bonitos */
+.edit-prest-esc,
+.cx-novo-usuario,
+.formulario-nova-empresa,
+.formulario-novo-cliente,
+.formulario-nova-funcao,
+.formulario-novo-setor,
+.formulario-novo-prestador,
+.formulario-alt-empresa,
+.formulario-nova-escala,
+.formulario-novo-orcamento {
+	width: auto;
+	max-width: 900px;
+	background: var(--white);
+	box-shadow: var(--shadow-lg);
+	border-radius: var(--radius-lg);
+	padding: 30px;
+	margin: 20px auto;
+	float: none !important;
+	/* Remove floats antigos */
+	border: 1px solid #eee;
+}
+
+/* Foto Prestador */
+.foto-prestador,
+#preview {
+	border-radius: 50%;
+	border: 4px solid var(--white);
+	box-shadow: var(--shadow-md);
+	object-fit: cover;
+}
+
+/* Autocomplete Lists */
+#country_list_id,
+#country_list_id_set_fun,
+#country_list_id_set,
+#lista_id {
+	border: none;
+	box-shadow: var(--shadow-lg);
+	border-radius: var(--radius-md);
+	padding: 0;
+	overflow: hidden;
+}
+
+/* --- Impressão --- */
+@media print {
+
+	html,
+	body {
+		background: white !important;
+		color: black !important;
+	}
+
+	.container {
+		box-shadow: none;
+		margin: 0;
+		width: 100%;
+	}
+}
+
+
+
+.cx-previa-orc {
+	width: 1100px;
+	margin: auto;
+	height: 500px;
+	background: none;
+}
+
+.cx-dados-previa {
+	width: 1100px;
+	height: 150px;
+	float: left;
+	background: none;
+	margin-top: 20px;
+}
+
+.caixas-dados-previa {
+	width: 338px;
+	height: 148px;
+	float: left;
+	background: none;
+	border: 1px solid #ccc;
+	margin-left: 20px;
+}
+
+.nome-campos-previa {
+	font-family: "arial";
+	font-size: 12px;
+	margin: 13px 0px 0px 10px;
+	font-weight: normal;
+}
+
+.titulo-escala {
+	text-align: center;
+	font-family: "arial";
+	font-size: 20px;
+	line-height: 77px;
+}
+
+.cabecalho-rel-esc {
+	width: 1100px;
+	height: 77px;
+	margin: auto;
+	background: red;
+}
+
+#cabecalho-esc-print {
+	display: none;
+}
+
+.cx-empty {
+	width: 70px;
+	height: 40px;
+	float: left;
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.empty-td {
+	border: 1px solid #000;
+	border-top: 1px solid #000 !important;
+	text-align: center;
+	margin-top: 5px;
+	width: 80px;
+}
+
+.empty-td-ass {
+	border: 1px solid #000;
+	border-top: 1px solid #000 !important;
+	text-align: center;
+	margin-top: 5px;
+	width: 200px;
+}
+
+#secondTable {
+	display: none;
+}
+
+#thirdTable {
+	display: none;
+}
+
+.linha-ass {
+	width: 100%;
+	height: 40px;
+	float: left;
+	background: none;
+	border-bottom: 1px solid #000;
+}
+
+.periodo-rpa {
+	font-family: "arial";
+	font-weight: normal;
+	font-size: 14px;
+	text-align: center;
+	margin-bottom: 30px;
+
+}
